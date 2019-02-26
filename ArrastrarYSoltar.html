@@ -1,0 +1,75 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Arrastrar y soltar</title>
+</head>
+<body>
+<div class="container_4">
+  <div class="grid_4" style="margin-top:15px">
+    <h1>Por favor posicione a los jugadores en el equipo al que correspondan</h1>
+    <section id="user-levels">
+    <div id="unassigned" class="drop" ondrop="dropUser(this, event)" ondragenter="return false" ondragover="return false">
+    <span>Jugadores sin ordenar</span>
+		<a draggable="true" class="RM" id="A28" ondragstart="dragUser(this, event)">Marcelo</a>
+		<a draggable="true" class="RM" id="A29" ondragstart="dragUser(this, event)">Bale</a>
+		<a draggable="true" class="RM" id="A30" ondragstart="dragUser(this,event)">Kroos</a>
+		<a draggable="true" class="CV" id="A31" ondragstart="dragUser(this, event)">Iago Aspas</a>
+		<a draggable="true" class="CV" id="A32" ondragstart="dragUser(this, event)">Emre Mor</a>
+		<a draggable="true" class="CV" id="A1" ondragstart="dragUser(this, event)">Maxi Gomez</a>
+		<a draggable="true" class="RV" id="A2" ondragstart="dragUser(this, event)">Emiliano Velazquez</a>
+		<a draggable="true" class="RV" id="A3" ondragstart="dragUser(this, event)">Alejandro Galvez</a>
+		<a draggable="true" class="RV" id="A4" ondragstart="dragUser(this, event)">Jordi Amat</a>
+    </div>
+
+    <div id="RM" class="drop" ondrop="dropUser(this, event)" ondragenter="return false" ondragover="return false"><span>Real Madrid</span></div>
+    <div id="CV" class="drop" ondrop="dropUser(this, event)" ondragenter="return false" ondragover="return false"><span>Celta de Vigo</span></div>
+    <div id="RV" class="drop" ondrop="dropUser(this, event)" ondragenter="return false" ondragover="return false"><span>Rayo Vallecano</span></div>
+    <div class="clear"></div>
+    </section>
+
+    <script type="text/javascript">
+        function dragUser(user, event) 
+		{
+            event.dataTransfer.setData('User', user.id);
+        }
+
+        function dropUser(target, event) 
+		{
+            var user = event.dataTransfer.getData('User');
+			var equipo = document.getElementById(user).className;
+			if(equipo == target.id)
+			{
+				target.appendChild(document.getElementById(user));
+			}
+        }
+    </script>
+
+    <style type="text/css">
+      .drop {
+        width: 100%;
+        padding: 20px;
+        height: 18px;
+        margin: 30px auto;
+        background: #f7F7F7;
+        border: 1px solid #333;
+      }
+
+      .drop span {
+        margin-right: 20px;
+        display: block;
+        float: left;
+      }
+
+      .drop a {
+        color: #FFF;
+        background: #FF4b33;
+        border-radius: 2px;
+        padding: 5px;
+      }
+
+    </style>
+    
+  </div>
+</div>
+</body>
+</html>
